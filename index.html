@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bright Path accessible communication and learning support prototype.">
+  <title>Bright Path | Communication & Support</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="brand-mark" aria-hidden="true">✦</div>
+    <div>
+      <p class="eyebrow">ASSISTIVE TECHNOLOGY PROTOTYPE</p>
+      <h1>Bright Path</h1>
+      <p class="subtitle">Communication, learning and caregiver support</p>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Main navigation">
+    <button class="tab active" data-panel="child-panel" aria-selected="true">My Space</button>
+    <button class="tab" data-panel="caregiver-panel" aria-selected="false">Caregiver View</button>
+    <button class="tab" data-panel="about-panel" aria-selected="false">About</button>
+  </nav>
+
+  <main id="main">
+    <section id="child-panel" class="panel active" aria-labelledby="welcome-title">
+      <div class="welcome card">
+        <div>
+          <p class="eyebrow">YOUR SPACE</p>
+          <h2 id="welcome-title">What would you like to say?</h2>
+          <p>Choose a helpful phrase, type your own words, or use voice tools if your browser supports them.</p>
+        </div>
+        <div class="sun" aria-hidden="true">☀</div>
+      </div>
+
+      <div class="grid two-col">
+        <section class="card" aria-labelledby="phrases-title">
+          <h3 id="phrases-title">Helpful phrases</h3>
+          <p class="muted">Tap a phrase to hear it and add it to today's activity log.</p>
+          <div class="phrase-grid" id="phrase-list">
+            <button class="phrase" data-phrase="I need a break."><span aria-hidden="true">🌿</span><span>I need a break</span></button>
+            <button class="phrase" data-phrase="Please help me."><span aria-hidden="true">🤝</span><span>Please help me</span></button>
+            <button class="phrase" data-phrase="I am happy."><span aria-hidden="true">😊</span><span>I am happy</span></button>
+            <button class="phrase" data-phrase="I feel overwhelmed."><span aria-hidden="true">🌧️</span><span>I feel overwhelmed</span></button>
+            <button class="phrase" data-phrase="I want to learn."><span aria-hidden="true">📘</span><span>I want to learn</span></button>
+            <button class="phrase" data-phrase="I need some quiet."><span aria-hidden="true">🔈</span><span>I need some quiet</span></button>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="voice-title">
+          <h3 id="voice-title">Speak or type</h3>
+          <label for="message">Your message</label>
+          <textarea id="message" rows="3" maxlength="300" placeholder="Type a message here..."></textarea>
+          <div class="button-row">
+            <button class="button primary" id="speak-btn">🔊 Read aloud</button>
+            <button class="button secondary" id="listen-btn">🎙️ Speech to text</button>
+          </div>
+          <p id="voice-status" class="status" role="status" aria-live="polite">Voice features depend on browser support and permission.</p>
+        </section>
+      </div>
+
+      <section class="card" aria-labelledby="checkin-title">
+        <h3 id="checkin-title">How are you feeling?</h3>
+        <p class="muted">Choose an option if you want to. This is a self-reported check-in, not AI emotion detection.</p>
+        <div class="mood-row" id="mood-options">
+          <button class="mood" data-mood="Calm"><span>😌</span>Calm</button>
+          <button class="mood" data-mood="Happy"><span>🙂</span>Happy</button>
+          <button class="mood" data-mood="Worried"><span>😟</span>Worried</button>
+          <button class="mood" data-mood="Overwhelmed"><span>😣</span>Overwhelmed</button>
+          <button class="mood" data-mood="Not sure"><span>💭</span>Not sure</button>
+        </div>
+        <p id="mood-status" class="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="card" aria-labelledby="focus-title">
+        <h3 id="focus-title">One-minute focus activity</h3>
+        <p>Try a simple activity: look at the shapes, take a comfortable breath, and choose when you're ready.</p>
+        <div class="focus-visual" aria-hidden="true"><span>○</span><span>△</span><span>□</span></div>
+        <label for="focus-choice">Which shape did you notice first?</label>
+        <select id="focus-choice">
+          <option value="">Choose an answer</option><option>Circle</option><option>Triangle</option><option>Square</option>
+        </select>
+        <button class="button primary" id="focus-submit">Finish activity</button>
+        <p id="focus-status" class="status" role="status" aria-live="polite"></p>
+      </section>
+    </section>
+
+    <section id="caregiver-panel" class="panel" aria-labelledby="caregiver-title" hidden>
+      <div class="welcome card">
+        <div>
+          <p class="eyebrow">CAREGIVER VIEW</p>
+          <h2 id="caregiver-title">Activity summary</h2>
+          <p>Review entries saved on this device. This prototype does not send data to a server.</p>
+        </div>
+        <div class="sun" aria-hidden="true">♡</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat card"><span class="muted">Logged activities</span><strong id="total-count">0</strong></div>
+        <div class="stat card"><span class="muted">Communication phrases</span><strong id="phrase-count">0</strong></div>
+        <div class="stat card"><span class="muted">Focus activities</span><strong id="focus-count">0</strong></div>
+      </div>
+      <section class="card">
+        <div class="section-heading">
+          <div><h3>Recent entries</h3><p class="muted">Use this information as a conversation aid, not a diagnosis.</p></div>
+          <button class="button danger" id="clear-log">Clear local log</button>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Date/time</th><th>Activity</th><th>Details</th></tr></thead>
+            <tbody id="log-rows"><tr><td colspan="3">No activities recorded yet.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="about-panel" class="panel" aria-labelledby="about-title" hidden>
+      <section class="card">
+        <p class="eyebrow">PROJECT OVERVIEW</p>
+        <h2 id="about-title">About Bright Path</h2>
+        <p>Bright Path is a student project prototype exploring accessible communication and learning support for children with autism. It demonstrates phrase buttons, browser speech tools, optional self-reported check-ins, a basic focus activity, and a caregiver activity log.</p>
+        <h3>Important limitations</h3>
+        <ul>
+          <li>This prototype does not diagnose autism or detect emotions automatically.</li>
+          <li>Activity logs are stored in this browser's local storage and may be visible to other users of the same device.</li>
+          <li>Do not enter sensitive personal or medical information.</li>
+          <li>Use with caregiver/educator guidance and adapt the interface to each child's preferences.</li>
+          <li>Speech recognition may not work in every browser or language.</li>
+        </ul>
+        <h3>Accessibility choices</h3>
+        <p>Large buttons, clear labels, keyboard focus styles, simple wording, reduced-motion support, and status announcements are included. This is a prototype and should be tested with intended users and accessibility specialists.</p>
+      </section>
+    </section>
+  </main>
+
+  <footer><p>Bright Path • Student prototype • No medical or diagnostic claims</p></footer>
+  <script src="app.js"></script>
+</body>
+</html>
